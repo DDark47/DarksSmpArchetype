@@ -13,7 +13,6 @@ repositories {
     maven { url "https://cursemaven.com" }
     maven { url "https://maven.thebrokenscript.net/snapshots" }
     mavenCentral()
-    maven { url "https://repo.redlance.org/public" }
 }
 
 base {
@@ -118,9 +117,6 @@ dependencies {
     // implementation project(":myproject")
 
     implementation ("net.mc3699:provenance:2.9")
-    jarJar(implementation("com.zigythebird.playeranim:PlayerAnimationLibNeo:$project.pal_version")) {
-        transitive = false
-    }
     // For more info:
     // http://www.gradle.org/docs/current/userguide/artifact_dependencies_tutorial.html
     // http://www.gradle.org/docs/current/userguide/dependency_management.html

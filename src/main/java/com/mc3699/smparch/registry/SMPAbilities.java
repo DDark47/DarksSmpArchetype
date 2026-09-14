@@ -1,21 +1,38 @@
 package com.mc3699.smparch.registry;
 
 import com.mc3699.smparch.SMPArch;
-import com.mc3699.smparch.archetype.aidenman.*;
-import com.mc3699.smparch.archetype.arveral.*;
-import com.mc3699.smparch.archetype.blox.*;
+import com.mc3699.smparch.archetype.aidenman.PhotosynthesisAbility;
+import com.mc3699.smparch.archetype.ariytwo6.AriyhomeAbility;
+import com.mc3699.smparch.archetype.ariytwo6.GroundpunchAbility;
+import com.mc3699.smparch.archetype.ariytwo6.StrengthrandAbility;
+import com.mc3699.smparch.archetype.ariytwo6.WaterjumpAbility;
+import com.mc3699.smparch.archetype.arveral.TendrilsAbility;
+import com.mc3699.smparch.archetype.blox.BloxDashAbility;
+import com.mc3699.smparch.archetype.blox.BloxShieldAbility;
+import com.mc3699.smparch.archetype.blox.BloxSpeedAbility;
 import com.mc3699.smparch.archetype.emberflame65.*;
-import com.mc3699.smparch.archetype.eyae.*;
-import com.mc3699.smparch.archetype.firelight.*;
-import com.mc3699.smparch.archetype.growth.*;
-import com.mc3699.smparch.archetype.heaven.*;
-import com.mc3699.smparch.archetype.john_ultrakill.*;
+import com.mc3699.smparch.archetype.eyae.SummonBigHandsAbility;
+import com.mc3699.smparch.archetype.firelight.DragonLeapAbility;
+import com.mc3699.smparch.archetype.growth.GrowthDebuff;
+import com.mc3699.smparch.archetype.growth.NatureGiftAbility;
+import com.mc3699.smparch.archetype.growth.NatureSightAbility;
+import com.mc3699.smparch.archetype.heaven.BlackoutAbility;
+import com.mc3699.smparch.archetype.heaven.ContagionAbility;
+import com.mc3699.smparch.archetype.heaven.DisruptionAbility;
+import com.mc3699.smparch.archetype.heaven.OverheatAbility;
+import com.mc3699.smparch.archetype.john_ultrakill.UltrakillDashAbility;
+import com.mc3699.smparch.archetype.john_ultrakill.UltrakillFeedbackerAbility;
+import com.mc3699.smparch.archetype.john_ultrakill.UltrakillSlamAbility;
 import com.mc3699.smparch.archetype.miku.*;
-import com.mc3699.smparch.archetype.nightheart.*;
-import com.mc3699.smparch.archetype.pencil_html.*;
-import com.mc3699.smparch.archetype.teebee.*;
-import com.mc3699.smparch.archetype.terra.*;
-import com.mc3699.smparch.archetype.zorgoliath.*;
+import com.mc3699.smparch.archetype.nightheart.RandomTeleportAbility;
+import com.mc3699.smparch.archetype.pencil_html.EndStepAbility;
+import com.mc3699.smparch.archetype.teebee.AmplifyAbility;
+import com.mc3699.smparch.archetype.teebee.ReverseAbility;
+import com.mc3699.smparch.archetype.terra.HeartbeatAbility;
+import com.mc3699.smparch.archetype.terra.SolarSurgeAbility;
+import com.mc3699.smparch.archetype.zorgoliath.HarkenTrueSight;
+import com.mc3699.smparch.archetype.zorgoliath.HarkenerSilentDash;
+import com.mc3699.smparch.archetype.zorgoliath.HarkenerWrathfulAdvance;
 import com.mc3699.smparch.generic_abilities.*;
 import net.mc3699.provenance.ProvenanceRegistries;
 import net.mc3699.provenance.ability.foundation.BaseAbility;
@@ -160,6 +177,19 @@ public class SMPAbilities {
 
     public static final Supplier<ReverseAbility> REVERSE =
             ABILITIES.register("reverse", ReverseAbility::new);
+
+    public static final Supplier<AriyhomeAbility> HOME =
+            ABILITIES.register("home_coming", AriyhomeAbility::new);
+
+    public static final Supplier<WaterjumpAbility> WJUMP =
+            ABILITIES.register("water_jump", WaterjumpAbility::new);
+
+    public static final Supplier<GroundpunchAbility> GPUNCH =
+            ABILITIES.register("ground_punch", GroundpunchAbility::new);
+
+    public static final Supplier<StrengthrandAbility> SROLL =
+            ABILITIES.register("strength_random", StrengthrandAbility::new);
+
 
     public static void register(IEventBus eventBus) { ABILITIES.register(eventBus); }
 
