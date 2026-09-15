@@ -40,7 +40,7 @@ public class ExperienceCrystallizationAbility extends BaseAbility {
     
     @Override
     public boolean canExecute(ServerPlayer serverPlayer) {
-        return true;
+        return ModList.get().isLoaded("create");
     }
     
     @Override
@@ -51,7 +51,7 @@ public class ExperienceCrystallizationAbility extends BaseAbility {
         
         AABB searchArea = new AABB(player.getBlockPosBelowThatAffectsMyMovement()).inflate(16);
         List<ExperienceOrb> orbs = level.getEntitiesOfClass(ExperienceOrb.class, searchArea);
-        if (ModList.get().isLoaded("create") && !orbs.isEmpty()) {
+        if (!orbs.isEmpty()) {
             orbs.forEach(o -> {
                 int value = getValue(o);
                 

@@ -24,6 +24,7 @@ public class VoltageArchetype extends BaseArchetype {
     @Override
     public Set<ResourceLocation> getGrantedAbilities() {
         return Set.of(
+            SMPArch.path("random_teleport"),
             SMPArch.path("integrity_fireball"),
             SMPArch.path("voltage_jumpscare"),
             SMPArch.path("voltage_chase"),
