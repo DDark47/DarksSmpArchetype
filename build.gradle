@@ -11,6 +11,8 @@ group = mod_group_id
 repositories {
     mavenLocal()
     maven { url "https://cursemaven.com" }
+    maven { url "https://thedarkcolour.github.io/KotlinForForge/" }
+    maven { url "https://dl.cloudsmith.io/public/geckolib3/geckolib/maven/" }
     maven { url "https://maven.thebrokenscript.net/snapshots" }
     mavenCentral()
 }
@@ -117,6 +119,11 @@ dependencies {
     // implementation project(":myproject")
 
     implementation ("net.mc3699:provenance:2.9")
+    implementation files("libs/thebrokenscript-neoforge-2.0.4-hotfix+mc1.21.1-build.3291.jar")
+    api files("libs/net.thebrokenscript.brokencore-neoforge-0.1.0+mc1.21.1-build.3291.jar")
+    compileOnly("software.bernie.geckolib:geckolib-neoforge-1.21.1:4.8.4")
+    api("thedarkcolour:kotlinforforge-neoforge:5.11.0")
+
     // For more info:
     // http://www.gradle.org/docs/current/userguide/artifact_dependencies_tutorial.html
     // http://www.gradle.org/docs/current/userguide/dependency_management.html

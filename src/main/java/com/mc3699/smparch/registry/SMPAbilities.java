@@ -10,6 +10,10 @@ import com.mc3699.smparch.archetype.arveral.TendrilsAbility;
 import com.mc3699.smparch.archetype.blox.BloxDashAbility;
 import com.mc3699.smparch.archetype.blox.BloxShieldAbility;
 import com.mc3699.smparch.archetype.blox.BloxSpeedAbility;
+import com.mc3699.smparch.archetype.darkninja.ExperienceCrystallizationAbility;
+import com.mc3699.smparch.archetype.darkninja.FocusedTeleportationAbility;
+import com.mc3699.smparch.archetype.darkninja.HighJumpAbility;
+import com.mc3699.smparch.archetype.darkninja.MoonsPunishment;
 import com.mc3699.smparch.archetype.emberflame65.*;
 import com.mc3699.smparch.archetype.eyae.SummonBigHandsAbility;
 import com.mc3699.smparch.archetype.firelight.DragonLeapAbility;
@@ -30,6 +34,7 @@ import com.mc3699.smparch.archetype.teebee.AmplifyAbility;
 import com.mc3699.smparch.archetype.teebee.ReverseAbility;
 import com.mc3699.smparch.archetype.terra.HeartbeatAbility;
 import com.mc3699.smparch.archetype.terra.SolarSurgeAbility;
+import com.mc3699.smparch.archetype.voltage.*;
 import com.mc3699.smparch.archetype.zorgoliath.HarkenTrueSight;
 import com.mc3699.smparch.archetype.zorgoliath.HarkenerSilentDash;
 import com.mc3699.smparch.archetype.zorgoliath.HarkenerWrathfulAdvance;
@@ -153,6 +158,30 @@ public class SMPAbilities {
     
     public static final Supplier<MoonsPunishment> MOONS_PUNISHMENT =
             ABILITIES.register("moons_punishment", MoonsPunishment::new);
+    
+    public static final Supplier<VoltageChaseAbility> VOLTAGE_CHASE =
+            ABILITIES.register("voltage_chase", VoltageChaseAbility::new);
+    
+    public static final Supplier<VoltageFleeAbility> VOLTAGE_FLEE =
+            ABILITIES.register("voltage_flee", VoltageFleeAbility::new);
+    
+    public static final Supplier<VoltageJumpscareAbility> VOLTAGE_JUMPSCARE =
+            ABILITIES.register("voltage_jumpscare", VoltageJumpscareAbility::new);
+    
+    public static final Supplier<VoltageAmbient> VOLTAGE_AMBIENT =
+            ABILITIES.register("voltage_ambient", VoltageAmbient::new);
+    
+    public static final Supplier<SurvivalModeAbility> SURVIVAL_MODE =
+            ABILITIES.register("survival_mode", SurvivalModeAbility::new);
+    
+    public static final Supplier<SpectatorModeAbility> SPECTATOR_MODE =
+            ABILITIES.register("spectator_mode", SpectatorModeAbility::new);
+    
+    public static final Supplier<IsChillWithEntities> IS_CHILL_WITH_ENTITIES =
+            ABILITIES.register("is_chill_with_entities", IsChillWithEntities::new);
+    
+    public static final Supplier<IntegrityFireballAbility> INTEGRITY_FIREBALL =
+            ABILITIES.register("integrity_fireball", IntegrityFireballAbility::new);
     
     public static final Supplier<ArrowAbility> ARROW =
             ABILITIES.register("arrow", ArrowAbility::new);
