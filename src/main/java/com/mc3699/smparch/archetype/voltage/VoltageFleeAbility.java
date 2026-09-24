@@ -47,7 +47,6 @@ public class VoltageFleeAbility extends BaseAbility {
             );
             PlayerUtil.trySendOverlay(target,ResourceLocation.fromNamespaceAndPath("thebrokenscript","textures/screens/tbe_curious.png"),15L);
         });
-        VoltageChaseAbility.INSTANCE.chaseEnd();
         player.setGameMode(GameType.SPECTATOR);
     }
     

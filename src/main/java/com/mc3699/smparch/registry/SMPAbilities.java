@@ -162,23 +162,23 @@ public class SMPAbilities {
     public static final Supplier<VoltageChaseAbility> VOLTAGE_CHASE =
             ABILITIES.register("voltage_chase", VoltageChaseAbility::new);
     
+    public static final Supplier<CircuitChaseAbility> CIRCUIT_CHASE =
+            ABILITIES.register("circuit_chase", CircuitChaseAbility::new);
+    
     public static final Supplier<VoltageFleeAbility> VOLTAGE_FLEE =
             ABILITIES.register("voltage_flee", VoltageFleeAbility::new);
     
     public static final Supplier<VoltageJumpscareAbility> VOLTAGE_JUMPSCARE =
             ABILITIES.register("voltage_jumpscare", VoltageJumpscareAbility::new);
     
-    public static final Supplier<VoltageAmbient> VOLTAGE_AMBIENT =
-            ABILITIES.register("voltage_ambient", VoltageAmbient::new);
+    public static final Supplier<VoidEntityAmbient> VOID_ENTITY_AMBIENT =
+            ABILITIES.register("void_entity_ambient", VoidEntityAmbient::new);
     
     public static final Supplier<SurvivalModeAbility> SURVIVAL_MODE =
             ABILITIES.register("survival_mode", SurvivalModeAbility::new);
     
     public static final Supplier<SpectatorModeAbility> SPECTATOR_MODE =
             ABILITIES.register("spectator_mode", SpectatorModeAbility::new);
-    
-    public static final Supplier<IsChillWithEntities> IS_CHILL_WITH_ENTITIES =
-            ABILITIES.register("is_chill_with_entities", IsChillWithEntities::new);
     
     public static final Supplier<IntegrityFireballAbility> INTEGRITY_FIREBALL =
             ABILITIES.register("integrity_fireball", IntegrityFireballAbility::new);

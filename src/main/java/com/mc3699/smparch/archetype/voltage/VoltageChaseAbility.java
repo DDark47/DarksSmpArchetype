@@ -10,6 +10,7 @@ import net.minecraft.network.chat.Component;
 import net.minecraft.resources.ResourceLocation;
 import net.minecraft.server.level.ServerPlayer;
 import net.minecraft.world.entity.EntityType;
+import net.minecraft.world.entity.monster.warden.Warden;
 import net.minecraft.world.entity.player.Player;
 import net.minecraft.world.level.GameType;
 import net.minecraft.world.level.Level;
@@ -17,6 +18,7 @@ import net.thebrokenscript.TheBrokenScript;
 import net.thebrokenscript.api.ext.PlayerExt;
 import net.thebrokenscript.brokencore.api.dsl.EntityTypeUtil;
 import net.thebrokenscript.brokencore.api.dsl.PlayerUtil;
+import net.thebrokenscript.entity.circuit.CircuitEntity;
 
 import java.util.*;
 
@@ -31,7 +33,7 @@ public class VoltageChaseAbility extends BaseAbility {
     
     @Override
     public int getCooldown() {
-        return 30 * 20;
+        return 0;
     }
     
     @Override
@@ -66,18 +68,21 @@ public class VoltageChaseAbility extends BaseAbility {
         
         int cooldown = ProvenanceDataHandler.getCooldown(player, id);
         
-        if (cooldown <= 0) return;
+//        if (cooldown <= 0) return;
         if (CHASED_PLAYERS.isEmpty()) return;
+        if (player.gameMode.getGameModeForPlayer().equals(GameType.SPECTATOR)) {
+            chaseEnd(false);
+            return;
+        }
         
         Level level = player.level();
-        if (cooldown > 1) {
-            List<Player> targets = level.getEntitiesOfClass(Player.class, player.getBoundingBox().inflate(100));
-            targets.forEach(target -> {
+//        if (cooldown > 1) {
+            level.getEntitiesOfClass(Player.class, player.getBoundingBox().inflate(100)).forEach(target -> {
                 target.displayClientMessage(Component.literal("<;✸;>").withStyle(ChatFormatting.BOLD, ChatFormatting.DARK_RED), true);
                 if (level.getRandom().nextFloat() > 0.99F) PlayerUtil.trySendOverlay(target,ResourceLocation.fromNamespaceAndPath("thebrokenscript","textures/screens/run.png"),2L);
                 
-                PlayerExt.INSTANCE.updateVars(player, (PlayerVariable) -> {
-                    PlayerVariable.setTextGlitchStrength(10);
+                PlayerExt.INSTANCE.updateVars(target, (PlayerVariable) -> {
+                    PlayerVariable.setTextGlitchStrength(1);
                     return Unit.INSTANCE;
                 });
                 
@@ -88,24 +93,25 @@ public class VoltageChaseAbility extends BaseAbility {
 //                };
                 if (!CHASED_PLAYERS.contains(target)) {
                     CHASED_PLAYERS.add(target);
-                    SMPArch.LOGGER.debug("chasing player {}", target.getName().getString());
+                    SMPArch.LOGGER.debug("Voltage chasing player {}", target.getName().getString());
                 }
             });
-        } else {
-            chaseEnd();
-            player.setGameMode(GameType.SPECTATOR);
-        }
+//        } else {
+//            chaseEnd();
+//            player.setGameMode(GameType.SPECTATOR);
+//        }
     }
     
     @Override
     public boolean canExecute(ServerPlayer player) {
-        return !(player.gameMode.getGameModeForPlayer().equals(GameType.SPECTATOR));
+//        return !(player.gameMode.getGameModeForPlayer().equals(GameType.SPECTATOR));
+        return true;
     }
-    public void chaseEnd() {
+    public void chaseEnd(boolean angry) {
         Iterator<Player> itr = CHASED_PLAYERS.iterator();
         while (itr.hasNext()) {
             Player target = itr.next();
-            target.displayClientMessage(Component.literal("<✸>").withStyle(ChatFormatting.BOLD, ChatFormatting.BLACK), true);
+            target.displayClientMessage(Component.literal(angry ? "<;✸;>" : "<✸>").withStyle(ChatFormatting.BOLD, ChatFormatting.BLACK), true);
             PlayerExt.INSTANCE.updateVars(target, (PlayerVariable) -> {
                 PlayerVariable.setTextGlitchStrength(0);
                 return Unit.INSTANCE;

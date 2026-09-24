@@ -10,6 +10,8 @@ import net.minecraft.server.level.ServerPlayer;
 import net.minecraft.sounds.SoundSource;
 import net.minecraft.world.effect.MobEffectInstance;
 import net.minecraft.world.effect.MobEffects;
+import net.minecraft.world.entity.ai.targeting.TargetingConditions;
+import net.minecraft.world.entity.player.Player;
 import net.minecraft.world.level.GameType;
 import net.thebrokenscript.TheBrokenScript;
 import net.thebrokenscript.registry.TBSSounds;
@@ -40,9 +42,10 @@ public class VoltageJumpscareAbility extends BaseAbility {
         super.execute(player);
         ServerLevel level = player.serverLevel();
         player.setGameMode(GameType.SURVIVAL);
-        ServerPlayer target = level.getEntitiesOfClass(ServerPlayer.class, player.getBoundingBox().inflate(6)).stream().filter(p->p != player).findFirst().orElse(null);
+        ServerPlayer target = level.getNearestEntity(ServerPlayer.class, TargetingConditions.forNonCombat().ignoreInvisibilityTesting().ignoreLineOfSight(), player, player.getX(), player.getY(), player.getZ(), player.getBoundingBox().inflate(6));
         if (target == null) return;
         
+        player.setNoGravity(true);
         player.setDeltaMovement(0,0,0);
         player.lookAt(EntityAnchorArgument.Anchor.EYES, target, EntityAnchorArgument.Anchor.EYES);
         target.lookAt(EntityAnchorArgument.Anchor.EYES, player, EntityAnchorArgument.Anchor.EYES);
@@ -51,6 +54,7 @@ public class VoltageJumpscareAbility extends BaseAbility {
         target.addEffect(new MobEffectInstance(MobEffects.WITHER, 20, 9, true, false, true));
 
         TheBrokenScript.serverWorkQueue.add(15L, () -> {
+            player.setNoGravity(false);
             player.setGameMode(GameType.SPECTATOR);
             return Unit.INSTANCE;
         });

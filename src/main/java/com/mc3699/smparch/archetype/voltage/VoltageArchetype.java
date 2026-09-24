@@ -37,8 +37,7 @@ public class VoltageArchetype extends BaseArchetype {
     @Override
     public List<AmbientAbility> getAmbientAbilities() {
         return List.of(
-            SMPAbilities.VOLTAGE_AMBIENT.get(),
-            SMPAbilities.IS_CHILL_WITH_ENTITIES.get()
+            SMPAbilities.VOID_ENTITY_AMBIENT.get()
         );
     }
 }

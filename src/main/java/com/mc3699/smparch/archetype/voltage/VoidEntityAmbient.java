@@ -6,7 +6,7 @@ import net.minecraft.network.chat.Component;
 import net.minecraft.server.level.ServerPlayer;
 import net.thebrokenscript.api.ext.PlayerExt;
 
-public class VoltageAmbient extends AmbientAbility {
+public class VoidEntityAmbient extends AmbientAbility {
     @Override
     public void tick(ServerPlayer player) {
         PlayerExt.INSTANCE.updateVars(player, (PlayerVariable) -> {
@@ -18,7 +18,7 @@ public class VoltageAmbient extends AmbientAbility {
     }
         @Override
     public Component getName() {
-        return Component.literal("Voltage ambient stuff");
+        return Component.literal("Void Entity ambient stuff");
     }
     
     @Override
